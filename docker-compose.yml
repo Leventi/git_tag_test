@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+  app:
+    image: git_tag_test:0.0.2
+    container_name: bl-partners
+    hostname: bl-partners
+    restart: always
+    build:
+      context: .
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+    ports:
+      - "8009:8009"
+    #TODO healthcheck
+    networks:
+        main:
+
+networks:
+  main:
+    driver: bridge
+    name: bl-net-main
